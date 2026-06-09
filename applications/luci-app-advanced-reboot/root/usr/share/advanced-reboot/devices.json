@@ -1472,6 +1472,40 @@
   {
     "device": {
       "vendor": "ZyXEL",
+      "model": "EMG3435",
+      "board": [
+        "emg3435",
+        "zyxel,emg3435"
+      ]
+    },
+    "commands": {
+      "params": [],
+      "get": null,
+      "set": null,
+      "save": null
+    },
+    "partitions": [
+      {
+        "number": 1,
+        "param_values": [
+          "ff"
+        ],
+        "mtd": "mmcblk0p4",
+        "labelOffsetBytes": 32
+      },
+      {
+        "number": 2,
+        "param_values": [
+          "01"
+        ],
+        "mtd": "mmcblk0p7",
+        "labelOffsetBytes": 32
+      }
+    ]
+  },
+  {
+    "device": {
+      "vendor": "ZyXEL",
       "model": "NBG6817",
       "board": [
         "nbg6817",
