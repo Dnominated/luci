@@ -47,8 +47,7 @@ return baseclass.extend({
 	render: function(data) {
 		var systeminfo = data[0],
 		    mounts = data[1],
-		    root = L.isObject(systeminfo.root) ? systeminfo.root : {},
-		    tmp = L.isObject(systeminfo.tmp) ? systeminfo.tmp : {};
+		    root = L.isObject(systeminfo.root) ? systeminfo.root : {};
 
 		const existenceChk = function(fields, name, values) {
 			if (!fields.hasOwnProperty(name))
@@ -56,8 +55,7 @@ return baseclass.extend({
 		};
 
 		var fields = {};
-		existenceChk(fields, _('Disk space'), { used: root.used * 1024, size: root.total * 1024 });
-		existenceChk(fields, _('Temp space'), { used: tmp.used * 1024, size: tmp.total * 1024 });
+		existenceChk(fields, _('Configuration and Log space'), { used: root.used * 1024, size: root.total * 1024 });
 
 		for (var i = 0; i < mounts.length; i++) {
 			var entry = mounts[i];
@@ -65,7 +63,7 @@ return baseclass.extend({
 			if (MountSkipList.includes(entry.mount))
 				continue;
 
-			var name = entry.device + ' (' + entry.mount +')',
+			var name = (entry.mount === '/storage') ? _('Storage (/storage)') : entry.device + ' (' + entry.mount + ')',
 			    used = entry.size - entry.free;
 
 			existenceChk(fields, name, { used: used, size: entry.size });
