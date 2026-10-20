@@ -269,9 +269,8 @@ function network_updown(id, map, ev) {
 			uci.set('wireless', radio, 'disabled', '1');
 	}
 
-	return map.save().then(function() {
-		ui.changes.apply();
-	});
+	/* only stage the change: Save & Apply (with rollback) or Revert decides */
+	return map.save();
 }
 
 function next_free_sid(offset) {
